@@ -1,0 +1,37 @@
+måste ha libBox2d.a i lib mappen och Box2d headers i include mappen
+
+libBox2d.a skapas med CodeBlocks
+
+CodeBlocks projekt skapas av CMake
+
+CMake klagar...
+
+environment values måste finnas för:
+CMake
+MinGW
+ -------
+I got problems with CMake because I did not do this:
+
+Right-click on "[My] Computer"-> Properties -> Advanced System Settings
+Click "Environment Variables"
+Depending on which Windows you have, you may see User Variables and System Variables, 
+or it may be just one group (I can't remember the name). Anyway, create a new System Environment 
+Variable called MINGDIR, with the value C:\codeblocks\mingw or wherever you installed it to. 
+Then, find the variable called Path (or PATH) and append this to the end: C:\codeblocks\mingw\bin. 
+Put a semicolon at the end of the previous entry, and do not use a space.
+Also make sure that C:\CMake\bin is present in either the System Variable called Path, 
+or the user variable called Path. If not, append it to the end.
+
+Then when CodeBlocks wants to compile it did not find make.exe in the MinGW\bin folder so 
+I renamed mingw32-make.exe to make.exe and that worked.
+---------
+
+Genererar en projektfil för CodeBlocks
+
+Detta projekt kommer att göra libBox.a
+
+Tänk på att vissa funktioner kanske har ändrats eller tagits bort. 
+Och därför kanske gammal kod inte funkar.
+
+Fann vissa fel i Box2D.h där alla headers inte var includerade och nån gammal som inte tagits bort.
+Ändrade i den manuellt.
